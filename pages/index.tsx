@@ -15,7 +15,7 @@ export default function Home({
       <Seo title="Home" />
       {results?.map((movie: IMovieProps) => (
         <div key={movie.id} className="movie">
-          <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
           <h4>{movie.original_title}</h4>
         </div>
       ))}
@@ -25,6 +25,9 @@ export default function Home({
           grid-template-columns: 1fr 1fr;
           padding: 20px;
           gap: 20px;
+        }
+        .movie {
+          cursor: pointer;
         }
         .movie img {
           max-width: 100%;
