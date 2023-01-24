@@ -1,4 +1,5 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import Link from "next/link";
 import Seo from "../components/Seo";
 
 interface IMovieProps {
@@ -14,10 +15,21 @@ export default function Home({
     <div className="container">
       <Seo title="Home" />
       {results?.map((movie: IMovieProps) => (
-        <div key={movie.id} className="movie">
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
-          <h4>{movie.original_title}</h4>
-        </div>
+        <Link
+          key={movie.id}
+          href={{
+            pathname: `/movies/${movie.id}`,
+            query: {
+              title: movie.original_title,
+            },
+          }}
+          as={`/movies/${movie.id}`}
+        >
+          <div className="movie">
+            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+            <h4>{movie.original_title}</h4>
+          </div>
+        </Link>
       ))}
       <style jsx>{`
         .container {
