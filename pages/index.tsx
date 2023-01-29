@@ -17,13 +17,7 @@ export default function Home({
       {results?.map((movie: IMovieProps) => (
         <Link
           key={movie.id}
-          href={{
-            pathname: `/movies/${movie.id}`,
-            query: {
-              title: movie.original_title,
-            },
-          }}
-          as={`/movies/${movie.id}`}
+          href={`/movies/${movie.original_title}/${movie.id}`}
         >
           <div className="movie">
             <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
